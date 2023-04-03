@@ -9,6 +9,7 @@ async function bootstrap() {
     .setTitle('Running buddy')
     .setDescription('Running buddy app\'s API description')
     .setVersion('1.0')
+    .addTag('Running history')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Res, Body } from '@nestjs/common';
+import { ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { CreateHistoryDto } from 'src/dto/history.dto';
 
@@ -27,11 +28,18 @@ export class HistoryController {
   }
 
   @Get()
+  @ApiTags('Running history')
+  @ApiResponse({
+    status: 200,
+    description: "Return all run history"
+  })
   getAllHistory() {
     return this.data;
   }
 
   @Post()
+  @ApiTags('Running history')
+  @ApiResponse({ status: 200, description: 'The record has been successfully created.'})
   postNewData(@Body() req: CreateHistoryDto, @Res() res: Response) {
     this.data = [{
       time: req.time,
